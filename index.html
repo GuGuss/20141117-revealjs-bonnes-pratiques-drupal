@@ -1,0 +1,467 @@
+<!doctype html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+
+    <title>Drupal best practices</title>
+
+    <meta name="description" content="Drupal best practices">
+    <meta name="author" content="GuGuss">
+
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <link rel="stylesheet" href="css/reveal.min.css">
+    <link rel="stylesheet" href="css/theme/default.css" id="theme">
+
+    <!-- For syntax highlighting -->
+    <link rel="stylesheet" href="lib/css/zenburn.css">
+
+    <!-- If the query includes 'print-pdf', use the PDF print sheet -->
+    <script>
+      document.write( '<link rel="stylesheet" href="css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
+    </script>
+
+    <!--[if lt IE 9]>
+    <script src="lib/js/html5shiv.js"></script>
+    <![endif]-->
+
+    <!-- Customized Styles -->
+    <style type="text/css">
+    body {
+      background: url('media/sellanything-bkg-dark.jpg') bottom center no-repeat;
+      background-size: cover;/**/
+    }
+
+    /* Shadows for all screenshot slides */
+    .shadowh2 h2,
+    .shadowh2 h1 {
+      padding: 30px;
+      background-color: rgba(0,0,0,0.7);
+      border-radius: 20px;
+      border: 1px solid rgba(255,255,255,0.7);
+      box-shadow: 0 0 45px #000 inset;
+    }
+    .reveal section a img.logo,
+    .reveal section img.logo {
+      border: none;
+      background: none;
+      box-shadow:none;
+    }
+    .faded {
+      color: rgba(255,255,255,0.5);
+    }
+    </style>
+
+  </head>
+
+  <body>
+
+    <div class="reveal">
+
+      <div class="slides">
+
+          <!-- INTRODUCTION -->
+          <section>
+
+            <section class="shadowh2" data-background="media/best-practices.jpg">
+            </section>
+
+            <section style="text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;">
+              <img src="media/guss.jpg"/>
+              <p>Augustin Delaporte</p>
+              <p><a href="http://twitter.com/GussTissier">@GussTissier</a></p>
+            </section>
+
+            <section class="shadowh2" data-background="media/commerce-guy.png">
+              <h2>Commerce Guys</h2>
+              <p><strong>Paris | London | Ann Arbor, MI</strong></p>
+            </section>
+
+            <section>
+              <h2>Editeur de Drupal Commerce</h2>
+              <img src="media/usage-stats.png" />
+            </section>
+
+            <section>
+              <h2>Editeur de Commerce Kickstart</h2>
+              <img src="media/kickstart-v2.jpg" />
+            </section>
+
+            <section>
+              <h2>Créateur de Platform.sh</h2>
+              <img src="media/platform-ui.png" />
+            </section>
+
+            <section>
+              <h2>Mon experience</h2>
+              <ul>
+                <li class="fragment">Développement à la Chinoise</li>
+                <li class="fragment">Drupal & Drupal Commerce</li>
+                <li class="fragment">Commerce Kickstart v2</li>
+                <li class="fragment">Platform.sh</li>
+                <li class="fragment">Couple de 8</li>
+              </ul>
+            </section>
+
+            <section class="shadowh2" data-background="media/coupledehuit.png" data-background-position="top center">
+            </section>
+
+            <section>
+              <h3>Tout est question d'outils et de techniques</h3>
+            </section>
+
+          </section>
+
+          <!-- OUTILS -->
+          <section>
+
+            <section class="shadowh2" data-background="media/tools.jpg" data-background-position="top center">
+                <h1>Les Outils</h1>
+            </section>
+
+            <section>
+              <h2>Controle de version</h2>
+              <p class="fragment">Faciliter les retours en arrière</p>
+              <p class="fragment">Permettre le travail collaboratif</p>
+            </section>
+
+            <section>
+              <h2>Git</h2>
+              <p>Rapidité et efficacité</p>
+              <p>Intégrité des données et transaction atomique</p>
+              <p>Création de branches</p>
+              <p>Staging area</p>
+            </section>
+
+            <section>
+              <h2>Code review</h2>
+              <p class="fragment">Auditer des parties spécifiques du code</p>
+              <p class="fragment">Identifier les problèmes qui peuvent survenir</p>
+            </section>
+
+            <section>
+              <h2>Github</h2>
+              <img src="media/github.png" />
+            </section>
+
+            <section>
+              <h2>Drush</h2>
+              <p><em>Drupal without Drush is like life without mobile phones... you know you managed just fine but now you just can't imagine how</em></p>
+            </section>
+
+            <section>
+              <h2>Drush</h2>
+              <ul>
+                <li>Connection à MySQL: <em>drush sql cli</em></li>
+                <li>Installation du site: <em>drush si</em></li>
+                <li>Lancer le cron: <em>drush cron</em></li>
+                <li>Lancer les mises à jour de base de données: <em>drush updatedb</em></li>
+                <li>Revert ou mettre à jour les features: <em>drush fra</em></li>
+                <li>Lancer les migrations: <em>drush mi</em></li>
+                <li>...</li>
+              </ul>
+            </section>
+
+            <section>
+              <h2>Modules de développement</h2>
+              <ul>
+                <li>Devel</li>
+                <li>Drupal for firebug</li>
+                <li>Coder</li>
+                <li>XDebug</li>
+              </ul>
+            </section>
+
+            <section>
+              <h2>Tests automatisés</h2>
+              <ul>
+                <li>Simpletest</li>
+                <li>Behat/Mink</li>
+                <li>Selenium</li>
+              </ul>
+            </section>
+
+            <section>
+              <h2>Tests de montée en charge</h2>
+              <ul>
+                <li>JMeter</li>
+                <li>Apache Bench</li>
+                <li>WRK</li>
+              </ul>
+            </section>
+
+            <section>
+              <h2>WRK</h2>
+              <img src="media/wrk.png" />
+            </section>
+
+            <section>
+              <h2>Connaitre l'écosystème existant</h2>
+              <ul>
+                <li class="fragment">Commerce License / License Billing</li>
+                <li class="fragment">OpenID Connect / OpenID Connect SSO</li>
+                <li class="fragment">...</li>
+              </ul>
+            </section>
+
+            <section class="shadowh2" data-background="media/toys.jpg" data-background-position="top center">
+                <h1>Et maintenant?</h1>
+            </section>
+          </section>
+
+          <!-- TECHNIQUES -->
+          <section>
+
+            <section class="shadowh2" data-background="media/technique.jpg" data-background-position="top center">
+                <h1>Les Techniques</h1>
+            </section>
+
+            <section>
+              <h2>Plan d'architecture</h2>
+              <p class="fragment"><strong>Think hard</strong> before clicking</p>
+            </section>
+
+            <section>
+              <h2>Environments de développement</h2>
+              <p class="fragment">Tester dans des <strong>conditions réélles</strong> et <strong>en isolation</strong></p>
+            </section>
+
+            <section>
+              <h2>Fichier .make</h2>
+              <img src="media/makefile.png" />
+              <p>Terminé les patchs affectés de façon aléatoire</p>
+            </section>
+
+            <section>
+              <h2>Profil d'installation</h2>
+              <p class="fragment">Repartir de 0 à chaque instant</p>
+            </section>
+
+            <section class="shadowh2" data-background="media/what.jpg" data-background-position="top center">
+                <h1>Whaaaat?</h1>
+            </section>
+
+            <section>
+              <h2>Votre profil</h2>
+              <img src="media/custom-profile.png" />
+            </section>
+
+            <section>
+              <h2>Besoin d'un point de départ?</h2>
+              <img src="media/starter-profile.png" />
+            </section>
+
+            <section class="shadowh2" data-background="media/files.jpg" data-background-position="top center">
+                <h2>Configuration ==> fichiers</h2>
+            </section>
+
+            <section>
+              <h2>Features</h2>
+              <img src="media/features.png" />
+              <p><em>drush feature-revert</em></p>
+            </section>
+
+            <section>
+              <h2>Migrate</h2>
+              <img src="media/migrate.png" />
+              <p><em>drush migrate-import</em></p>
+            </section>
+
+            <section>
+              <h2>Un exemple</h2>
+              <img src="media/migrate2.png" />
+            </section>
+
+            <section>
+              <h2>Mises à jour</h2>
+              <img src="media/update.png" />
+              <p><em>drush updatedb</em></p>
+            </section>
+
+          </section>
+
+          <section>
+            
+            <section class="shadowh2" data-background="media/contributors.jpg" data-background-position="center">
+                <h2>Et en pratique?</h2>
+            </section>
+
+            <section>
+              <h2>Hier</h2>
+              <img src="media/jenkins.png" class="logo" />
+            </section>
+
+            <section>
+              <h2>build.sh</h2>
+              <pre>
+                <code>
+    #!/bin/bash
+    set -xe
+
+    if [ ! -d marketplace/.git ]; then
+      git clone git@github.com:commerceguys/marketplace.git
+    fi
+
+    # Go to Marketplace to run backups.
+    run-on-host marketplace_prod@marketplace.commerceguys.com << "END"
+
+    # Backup files and database (just in case).
+    export DIRDATE=`date '+%Y-%m-%d---%H-%M-%S'`
+    export BACKUPDIR=$HOME/jenkins-backups/marketplace-$DIRDATE
+    mkdir -p $BACKUPDIR
+    cp -RL www $BACKUPDIR/www
+    cd www
+    drush sql-dump > $BACKUPDIR/marketplace-$DIRDATE.sql
+
+    # End of backup script.
+    END
+
+    cd marketplace
+
+    # Fetch the new commits and checkout.
+    git fetch
+    git reset "origin/master" --hard
+
+    cd ..
+
+    # Copy to marketplace
+    rsync -a --delete marketplace/ marketplace_prod@marketplace.commerceguys.com:blimp
+    run-on-host marketplace_prod@marketplace.commerceguys.com << "EOF"
+    #!/bin/bash
+    set -xe
+
+    # Maintenance mode
+    unlink live
+    ln -s marketplace-maintenance live
+    sudo /etc/init.d/php5-fpm restart
+    cd www
+    drush vset maintenance_mode 1
+
+    # Stop the Advanced Queue daemon.
+    sudo sv stop advqueue-marketplace
+
+    # Build website.
+    cd ../blimp
+    export BUILD_ROOT=".."
+    chmod 755 ../www/sites/default
+    ./scripts/build
+
+    cd ../www
+
+    # Remove all .txt files
+    find . -name "*.txt" | xargs rm
+
+    # Rebuild registry
+    drush -y rr --no-cache-clear
+
+    # Update database.
+    drush -y updatedb --uri=https://marketplace.commerceguys.com
+
+    # Clear drush caches.
+    drush cc drush
+
+    # Clear all caches.
+    drush cc all
+
+    # Revert features.
+    drush -y fra
+
+    # Rebuild indexes.
+    drush -y sapi-c
+    drush -y sapi-i productdisplay 0
+    drush -y sapi-i licenses 0
+    drush -y sapi-i delivery_partner 0
+
+    # Go live.
+    drush vset maintenance_mode 0
+    sudo sv start advqueue-marketplace
+    cd
+    unlink live
+    ln -s www live
+    sudo /etc/init.d/php5-fpm restart
+
+    EOF
+                </code>
+              </pre>
+            </section>
+
+            <section>
+              <h2>Aujourd'hui</h2>
+              <img src="media/platform-ui.png" class="logo" />
+              <br />
+              <img src="media/pf-logo-small.png" class="logo" />
+            </section>
+
+            <section>
+              <h2>Prenez un coupon et vivez l'expérience</h2>
+              <img src="media/pf-logo.png" class="logo" />
+            </section>
+
+          </section>
+
+          <!-- CONCLUSION -->
+          <section>
+
+            <section class="shadowh2" data-background="media/promised-land.jpg">
+            </section>
+
+            <section>
+              <h2>Les inconvénients</h2>
+              <p class="fragment">Temps de développement allongés</p>
+              <br/>
+              <h2>Les bénéfices</h2>
+              <p class="fragment">Prédire les processus de développement</p>
+              <p class="fragment">Réutiliser des composants à travers plusieurs projets</p>
+              <p class="fragment">Optimiser les changements de configurations</p>
+              <p class="fragment">Améliorer l'intégration avec des outils de tests automatisés</p>
+            </section>
+
+            <section>
+              <img src="media/questions.png" />
+            </section>
+
+            <section>
+              <h2>Débat</h2>
+              <img src="media/debat.jpg" />
+              <p class="fragment">Quand suivre ces bonnes pratiques?</p>
+              <p class="fragment">Drupal impose-t'il ces bonnes pratiques?</p>
+              <p class="fragment">Quels facteurs définissent l'usage de ces bonnes pratiques?</p>
+            </section>
+
+          </section>
+
+    <script src="lib/js/head.min.js"></script>
+    <script src="js/reveal.min.js"></script>
+
+    <script>
+
+      // Full list of configuration options available here:
+      // https://github.com/hakimel/reveal.js#configuration
+      Reveal.initialize({
+        controls: true,
+        progress: true,
+        history: true,
+        center: true,
+
+        theme: Reveal.getQueryHash().theme,
+        transition: Reveal.getQueryHash().transition || 'default',
+
+        // Optional libraries used to extend on reveal.js
+        dependencies: [
+          { src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+          { src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+          { src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+          { src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+          { src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+          { src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+        ]
+      });
+
+    </script>
+
+  </body>
+</html>
